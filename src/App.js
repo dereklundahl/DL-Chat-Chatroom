@@ -21,7 +21,10 @@ class App extends Component {
           <h1 className="App-title">Bloc Chat</h1>
         </header>
         <section className="side-bar">
-          <RoomList firebase={firebase}/>
+          <RoomList firebase={firebase} />
+        </section>
+        <section className="main">
+          
         </section>
       </div>
     );

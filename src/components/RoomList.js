@@ -22,8 +22,8 @@ componentDidMount() {
   });
 }
 
-createRoom() {
-  console.log("oh farts");
+createRoom(e) {
+  e.preventDefault();
   this.roomsRef.push({
     name: this.state.newRoom
   });
@@ -47,7 +47,7 @@ render() {
         <form>
           <p>New Chat Room:
             <input type="text" name="chatroomname" size="15" maxLength="20" onChange={(e) => this.handleChange(e)} />
-            <input type="submit" value="Create Room" onClick={() => this.createRoom()} />
+            <input type="submit" value="Create Room" onClick={(e) => this.createRoom(e)} />
           </p>
         </form>
 
