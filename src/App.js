@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList.js';
+import MessageList from './components/MessageList.js';
 
 var config = {
   apiKey: "AIzaSyCnW01J7rjhrCNuxnGHgXgqjXaKqIRh1_g",
@@ -14,17 +15,30 @@ var config = {
 firebase.initializeApp(config);
 
 class App extends Component {
+  constructor(props){
+    super(props);
+
+  this.state = {
+    activeRoom: "room1"
+  };
+}
+
+handleRoomClick() {
+  console.log('You clicked a room');
+}
+
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Bloc Chat</h1>
         </header>
-        <section className="side-bar">
-          <RoomList firebase={firebase} />
-        </section>
+        <aside className="side-bar">
+          <RoomList firebase={firebase} onClick={() => this.handleRoomClick()}/>
+        </aside>
         <section className="main">
-          
+          <MessageList firebase={firebase} />
         </section>
       </div>
     );
