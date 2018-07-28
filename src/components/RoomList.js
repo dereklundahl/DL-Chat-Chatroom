@@ -24,14 +24,20 @@ componentDidMount() {
 
 createRoom(e) {
   e.preventDefault();
+
   this.roomsRef.push({
     name: this.state.newRoom
   });
+  this.setState({ newRoom: "" });
 }
 
 handleChange(e) {
   const newRoomName = e.target.value;
   this.setState({ newRoom: newRoomName });
+}
+
+handleClick(e) {
+  console.log("you clicked on a room");
 }
 
 render() {
@@ -41,7 +47,7 @@ render() {
         <ul>
           {
           this.state.rooms.map( (room, index) =>
-              <li key={index}>{ room.name }</li>)
+              <li key={index} onClick={(e) => this.handleClick(e)}>{ room.name }</li>)
           }
         </ul>
         <form className="room-create">

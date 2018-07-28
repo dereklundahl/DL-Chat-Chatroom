@@ -23,9 +23,6 @@ class App extends Component {
   };
 }
 
-handleRoomClick() {
-  console.log('You clicked a room');
-}
 
 
   render() {
@@ -35,10 +32,10 @@ handleRoomClick() {
           <h1 className="App-title">Bloc Chat</h1>
         </header>
         <aside className="side-bar">
-          <RoomList firebase={firebase} onClick={() => this.handleRoomClick()}/>
+          <RoomList firebase={firebase} activeRoom={this.state.activeRoom} />
         </aside>
         <section className="main">
-          <MessageList firebase={firebase} />
+          <MessageList firebase={firebase} activeRoom={this.state.activeRoom}/>
         </section>
       </div>
     );
