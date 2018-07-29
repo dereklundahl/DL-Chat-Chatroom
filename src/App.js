@@ -23,7 +23,10 @@ class App extends Component {
   };
 }
 
+handleRoomClick(room) {
+  this.setState({ activeRoom: room });
 
+}
 
   render() {
     return (
@@ -32,7 +35,7 @@ class App extends Component {
           <h1 className="App-title">Bloc Chat</h1>
         </header>
         <aside className="side-bar">
-          <RoomList firebase={firebase} activeRoom={this.state.activeRoom} />
+          <RoomList firebase={firebase} handleRoomClick={(room) => this.handleRoomClick(room)} activeRoom={this.state.activeRoom}/>
         </aside>
         <section className="main">
           <MessageList firebase={firebase} activeRoom={this.state.activeRoom}/>
