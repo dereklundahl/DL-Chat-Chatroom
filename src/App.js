@@ -24,7 +24,7 @@ class App extends Component {
 }
 
 handleRoomClick(room) {
-  this.setState({ activeRoom: room });
+  console.log(room.name);
 
 }
 
@@ -35,10 +35,17 @@ handleRoomClick(room) {
           <h1 className="App-title">Bloc Chat</h1>
         </header>
         <aside className="side-bar">
-          <RoomList firebase={firebase} handleRoomClick={(room) => this.handleRoomClick(room)} activeRoom={this.state.activeRoom}/>
+          <RoomList
+            firebase={firebase}
+            handleRoomClick={(room) => this.handleRoomClick(room)}
+            activeRoom={this.state.activeRoom}
+          />
         </aside>
         <section className="main">
-          <MessageList firebase={firebase} activeRoom={this.state.activeRoom}/>
+          <MessageList
+            firebase={firebase}
+            activeRoom={this.state.activeRoom}
+          />
         </section>
       </div>
     );

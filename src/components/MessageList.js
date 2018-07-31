@@ -9,7 +9,7 @@ class MessageList extends Component {
     userName: "DLunds",
     content: "test content",
     sentAt: "",
-    roomId: "room69",
+    roomId: "room34",
   };
   this.roomsRef = this.props.firebase.database().ref('rooms');
 }
@@ -27,7 +27,7 @@ componentDidMount() {
 render() {
   return (
     <div>
-      <h2 className="active-room">{this.props.activeRoom}</h2>
+        <h2 className="active-room">{this.props.activeRoom.name}</h2>
         <p>{this.state.userName}{this.state.sentAt}</p><br />
         <p>{this.state.content}</p>
     </div>
