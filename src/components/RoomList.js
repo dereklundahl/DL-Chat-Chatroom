@@ -44,7 +44,12 @@ render() {
         <ul>
           {
           this.state.rooms.map( (room, index) =>
-              <li key={index} onClick={this.props.handleRoomClick(room)}>{ room.name }</li>)
+              <li
+                key={index}
+                onClick={() => this.props.handleRoomClick(room)}
+                >
+                { room.name }
+              </li>)
           }
         </ul>
         <form className="room-create">

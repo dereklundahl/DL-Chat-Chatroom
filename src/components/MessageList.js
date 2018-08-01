@@ -6,11 +6,9 @@ class MessageList extends Component {
   super(props);
 
   this.state = {
-    userName: "DLunds",
-    content: "test content",
-    sentAt: "",
-    roomId: "room34",
+    activeRoomDisplaying: true,
   };
+
   this.roomsRef = this.props.firebase.database().ref('rooms');
 }
 
@@ -23,13 +21,20 @@ componentDidMount() {
 }
 
 
+displayMessages(obj) {
+  for (let i in obj) {
+    console.log(i + "--" + obj[i])
+  }
+}
+
+
 
 render() {
   return (
     <div>
         <h2 className="active-room">{this.props.activeRoom.name}</h2>
-        <p>{this.state.userName}{this.state.sentAt}</p><br />
-        <p>{this.state.content}</p>
+        <p>{(obj) => this.displayMessages(this.props.activeRoom)}</p><br />
+        <p>I have nothing to say</p>
     </div>
   )
 }

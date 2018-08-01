@@ -21,10 +21,13 @@ class App extends Component {
   this.state = {
     activeRoom: "room1"
   };
+this.handleRoomClick = this.handleRoomClick.bind(this);
 }
 
+
+
 handleRoomClick(room) {
-  console.log(room.name);
+  this.setState({ activeRoom: room });
 
 }
 
@@ -37,7 +40,7 @@ handleRoomClick(room) {
         <aside className="side-bar">
           <RoomList
             firebase={firebase}
-            handleRoomClick={(room) => this.handleRoomClick(room)}
+            handleRoomClick={this.handleRoomClick}
             activeRoom={this.state.activeRoom}
           />
         </aside>
