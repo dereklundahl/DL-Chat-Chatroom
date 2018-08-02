@@ -6,35 +6,45 @@ class MessageList extends Component {
   super(props);
 
   this.state = {
-    activeRoomDisplaying: true,
+    messages: [],
+
   };
 
-  this.roomsRef = this.props.firebase.database().ref('rooms');
+  this.messagesRef = this.props.firebase.database().ref('messages');
 }
 
 componentDidMount() {
-  this.roomsRef.on('child_added', snapshot => {
-    const room = snapshot.val();
-    room.key = snapshot.key;
+  this.messagesRef.on('child_added', snapshot => {
+    const message = snapshot.val();
+    message.key = snapshot.key;
+    this.setState({ messages: this.state.messages.concat(message) })
 
   });
-}
-
-
-displayMessages(obj) {
-  for (let i in obj) {
-    console.log(i + "--" + obj[i])
-  }
 }
 
 
 
 render() {
   return (
-    <div>
-        <h2 className="active-room">{this.props.activeRoom.name}</h2>
-        <p>{(obj) => this.displayMessages(this.props.activeRoom)}</p><br />
-        <p>I have nothing to say</p>
+    <div className='message-list'>
+      <h2>{this.props.activeRoom.name}</h2>
+      <ul>
+        {
+          this.state.messages.map( (message, index) => {
+            if (this.props.activeRoom.key === message.roomId) {
+              return
+                <table key={index}>
+                  <tbody>
+                    <tr>
+                      <td>{message.username}:{message.content}</td>
+                      <td>{message.sentAt}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            }
+          })
+        }
+      </ul>
     </div>
   )
 }
