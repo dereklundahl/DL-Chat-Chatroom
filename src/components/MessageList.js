@@ -22,31 +22,23 @@ componentDidMount() {
   });
 }
 
-
-
 render() {
   return (
     <div className='message-list'>
       <h2>{this.props.activeRoom.name}</h2>
       <ul>
+
         {
           this.state.messages.map( (message, index) => {
             if (this.props.activeRoom.key === message.roomId) {
-              return
-                <table key={index}>
-                  <tbody>
-                    <tr>
-                      <td>{message.username}:{message.content}</td>
-                      <td>{message.sentAt}</td>
-                    </tr>
-                  </tbody>
-                </table>
+              return <li key={index}>{message.username}:{message.content} Sent At: {message.sentAt}</li>
             }
           })
         }
+
       </ul>
     </div>
-  )
+  );
 }
 
 }
