@@ -30,8 +30,15 @@ componentDidMount() {
   render () {
     return (
       <div className="user">
-        {this.state.userSignedIn ? <button onClick={() => this.handleSignOutClick()}>Sign-out</button> : <button onClick={() => this.handleSignInClick()}>Sign-in</button>}
-        {this.props.user ? this.props.user.displayName : <h3>Guest</h3>} 
+        {this.state.userSignedIn ?
+          <button onClick={() => this.handleSignOutClick()}>
+            Sign-out
+          </button>
+          :
+          <button onClick={() => this.handleSignInClick()}>
+            Sign-in
+          </button>}
+        {this.props.user && this.state.userSignedIn ? this.props.user.displayName : <h3>Guest</h3>} 
       </div>
 
     );
