@@ -28,8 +28,12 @@ componentDidMount() {
 
 createMessage(e) {
   e.preventDefault();
+  const timeStamp = this.props.firebase.database.ServerValue.TIMESTAMP;
   this.messagesRef.push({
-    content: this.state.content
+    content: this.state.content,
+    roomId: this.props.activeRoom.key,
+    username: this.props.user.displayName,
+    sentAt: timeStamp
 
   });
   this.setState({ content: "" });
@@ -40,9 +44,8 @@ handleMessageChange(e) {
   e.preventDefault();
   const newMessage = e.target.value;
   this.setState({
-    content: newMessage,
-    username: this.props.user,
-    roomId: this.props.activeRoom.roomId
+    content: newMessage
+
   });
 }
 
