@@ -37,16 +37,12 @@ createMessage(e) {
 
   });
   this.setState({ content: "" });
-
 }
 
 handleMessageChange(e) {
   e.preventDefault();
   const newMessage = e.target.value;
-  this.setState({
-    content: newMessage
-
-  });
+  this.setState({ content: newMessage });
 }
 
 render() {
@@ -75,6 +71,8 @@ render() {
         this.props.activeRoom && this.props.user !== null ?
           <form>
             <textarea
+              cols="150"
+              rows="1"
               placeholder="Write your message here..."
               value={this.state.content}
               onChange={ (e) => this.handleMessageChange(e)}

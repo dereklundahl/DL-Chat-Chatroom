@@ -54,8 +54,19 @@ render() {
         </ul>
         <form className="room-create">
           <p>New Chat Room:
-            <input type="text" name="chatroomname" size="15" maxLength="20" onChange={(e) => this.handleChange(e)} value={this.state.newRoom} />
-            <input type="submit" value="Create Room" onClick={(e) => this.createRoom(e)} />
+            <input
+              type="text"
+              name="chatroomname"
+              size="15"
+              maxLength="20"
+              onChange={(e) => this.handleChange(e)}
+              value={this.state.newRoom}
+            />
+            <input
+              type="submit"
+              value="Create Room"
+              onClick={(e) => this.createRoom(e)}
+            />
           </p>
         </form>
 
